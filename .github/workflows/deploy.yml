@@ -1,0 +1,28 @@
+name: Deploy React to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # 當你 push 到 main 分支時觸發
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Vite build 出來的資料夾名稱
+          branch: gh-pages # 自動把結果推送到這個分支
