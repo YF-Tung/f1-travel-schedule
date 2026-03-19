@@ -3,7 +3,7 @@ import {
   BookOpen, Map, Info, ChevronDown, ChevronUp, 
   AlertCircle, Clock, ShoppingBag, Flag, Navigation,
   Coffee, Utensils, Zap, Camera, Train, Footprints,
-  Heart, Sun, Star
+  Heart, Sun, Star, Ticket
 } from 'lucide-react';
 
 const App = () => {
@@ -42,9 +42,9 @@ const App = () => {
         { time: '07:00', title: '名站出發', desc: '試跑方案 A：津車站轉乘法。', icon: <Train size={18} /> },
         { time: '09:00', title: 'Pit Lane Walk', desc: '看技師工作，這時人最少。', icon: <Flag size={18} /> },
         { time: '11:00', title: '搶購 Merchandise', desc: '衣服、帽子今天不買，週六會斷貨！', icon: <ShoppingBag size={18} /> },
-        { time: '14:30', title: '撤退回名古屋', desc: '保留體力，下午去名古屋城散步。', icon: <Camera size={18} /> },
+        { time: '14:30', title: '回程：接駁車', desc: '今日人潮較少，可輕鬆排隊搭接駁車回白子站。', icon: <Navigation size={18} /> },
       ],
-      memo: '今天主要是熟悉動線，不要讓腿太累，好戲在後頭。'
+      memo: '今天主要是熟悉動線，不要讓腿太累，週四撤退最容易。'
     },
     {
       date: '3/27 (五)',
@@ -54,9 +54,9 @@ const App = () => {
         { time: '08:00', title: '柳橋市場早餐', desc: '新鮮海鮮丼，吃飽了才有力氣。', icon: <Utensils size={18} /> },
         { time: '11:30', title: 'F1 練習賽 FP1', desc: '在不同看台移動，感受震撼聲浪。', icon: <Zap size={18} /> },
         { time: '15:00', title: 'F1 練習賽 FP2', desc: '看車手挑戰極速彎道。', icon: <Flag size={18} /> },
-        { time: '16:30', title: '回程 80 分鐘挑戰', desc: '走往白子站，沿途欣賞鈴鹿風景。', icon: <Footprints size={18} /> },
+        { time: '16:30', title: '回程：接駁車', desc: '週五人潮尚可控，建議搭接駁車保留戰力。', icon: <Navigation size={18} /> },
       ],
-      memo: '走路去白子站會經過很多攤位，可以看看有沒有特別的紀念品。'
+      memo: '練習賽結束後若不急，可以在賽場多待一下避開首波排隊。'
     },
     {
       date: '3/28 (六)',
@@ -65,9 +65,9 @@ const App = () => {
       checkpoints: [
         { time: '15:00', title: 'F1 排位賽', desc: '全場屏息，見證竿位誕生的瞬間。', icon: <Zap size={18} /> },
         { time: '18:00', title: 'Night Pit Walk', desc: '燈光下的賽車像藝術品一樣。', icon: <Camera size={18} /> },
-        { time: '20:00', title: '步行往白子站', desc: '晚風徐徐，跟著車迷人龍前進。', icon: <Footprints size={18} /> },
+        { time: '20:00', title: '回程：步行挑戰', desc: '今日地獄排隊預警！啟動 80 分鐘步行模式往白子站。', icon: <Footprints size={18} /> },
       ],
-      memo: '晚上賽道會變涼，記得帶件小外套。'
+      memo: '六日這兩天回程絕對不排接駁車，用走的比較快！'
     },
     {
       date: '3/29 (日)',
@@ -77,9 +77,9 @@ const App = () => {
         { time: '12:00', title: '車手巡遊', desc: '舉起旗子大聲應援吧！', icon: <Heart size={18} /> },
         { time: '14:00', title: 'F1 正賽開始', desc: '53 圈的熱血，每一秒都別眨眼。', icon: <Flag size={18} /> },
         { time: '17:00', title: '東賽道漫步', desc: '走進賽道撿胎屑，這才是車迷！', icon: <Star size={18} /> },
-        { time: '21:30', title: '名站燒肉慶功', desc: '辛苦了！大口吃肉犒賞自己。', icon: <Utensils size={18} /> },
+        { time: '18:30', title: '回程：最終步行', desc: '最後一次 80 分鐘大行軍，往白子站出發。', icon: <Footprints size={18} /> },
       ],
-      memo: '正賽後人潮最多，我們不趕時間，慢慢走回白子站。'
+      memo: '正賽後是最大地獄！絕對不要在此時去排接駁車，直接走去白子。'
     },
     {
       date: '3/30 (一)',
@@ -203,50 +203,100 @@ const App = () => {
             {/* Critical Info Sticker */}
             <div className="bg-red-50 border-2 border-dashed border-red-200 rounded-3xl p-6 relative">
               <div className="absolute -top-3 -left-2 bg-red-500 text-white px-4 py-1 rounded-full text-xs font-black -rotate-3">必看！</div>
-              <h4 className="font-black text-red-600 text-lg mb-2">伊勢鐵道不能刷卡喔！</h4>
-              <p className="text-sm text-red-700 leading-relaxed font-medium">
-                津車站到稻生這段，<span className="bg-red-200 px-1">不可以刷悠遊卡/Suica</span>。
+              <h4 className="font-black text-red-600 text-lg mb-2 flex items-center gap-2">
+                <AlertCircle size={20}/> 伊勢鐵道不能刷卡！
+              </h4>
+              <p className="text-sm text-red-700 leading-relaxed font-black">
+                津車站 ↔ 鈴鹿稻生 這段 <span className="underline decoration-red-500">不收任何交通 IC 卡</span> (Suica / PASMO 等)。
               </p>
-              <p className="text-xs text-red-500/80 mt-2 italic">
-                請在津車站找機器買「實體來回票」，不然回程會很麻煩喔！
-              </p>
+              <div className="mt-3 p-3 bg-white/60 rounded-xl border border-red-100">
+                <p className="text-xs text-red-600 font-bold italic">
+                  實戰建議：在津車站轉乘口，請尋找櫃檯或售票機購買「實體來回票」，避免回程被困在稻生站月台！
+                </p>
+              </div>
             </div>
 
-            {/* Travel Steps - Polaroid Style */}
-            <div className="space-y-4">
-              <h3 className="font-black text-xl ml-2 mb-4 text-blue-600 flex items-center gap-2">去程方案 A <Navigation size={20}/></h3>
-              {[
-                { step: '1', title: '名站 ➡️ 津 (Tsu)', desc: '近鐵特急對號座，保證有位。' },
-                { step: '2', title: '津 ➡️ 稻生站', desc: '轉伊勢鐵道，記得買實體票。' },
-                { step: '3', title: '散步到賽場', desc: '稻生站走 20 分鐘抵達。' }
-              ].map((item, i) => (
-                <div key={i} className="bg-white p-5 rounded-3xl border-2 border-neutral-100 shadow-sm flex gap-4 items-center">
-                  <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-black shrink-0">{item.step}</div>
-                  <div>
-                    <div className="font-black text-base">{item.title}</div>
-                    <p className="text-xs text-neutral-400">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Timetable Sticker */}
-            <div className="bg-white border-2 border-[#e0e0e0] rounded-[2.5rem] p-6 shadow-sm">
-              <h3 className="font-black text-lg text-[#333] mb-4 text-center">🚌 白子站接駁車時間</h3>
-              <div className="space-y-3">
+            {/* Departure Method A */}
+            <div className="bg-white p-6 rounded-[2.5rem] border-2 border-[#e0e0e0] shadow-sm">
+              <h3 className="font-black text-xl mb-4 text-blue-600 flex items-center gap-2">去程最佳解：方案 A</h3>
+              <p className="text-xs text-neutral-400 mb-4 italic">目標：避開名古屋直達鈴鹿的驚人排隊人潮</p>
+              <div className="space-y-4">
                 {[
-                  { date: '3/26 (四)', back: '18:00' },
-                  { date: '3/27 (五)', back: '18:00' },
-                  { date: '3/28 (六)', back: '20:00' },
-                  { date: '3/29 (日)', back: '19:30' }
-                ].map((row, i) => (
-                  <div key={i} className="flex justify-between items-center py-2 border-b border-dashed border-neutral-100">
-                    <span className="text-sm font-bold">{row.date}</span>
-                    <span className="text-sm font-black text-red-500">末班車 {row.back}</span>
+                  { step: '1', title: '名站 ➡️ 津 (Tsu)', desc: '搭近鐵特急 (45-55分)。強烈建議官網先預訂對號座。' },
+                  { step: '2', title: '津 ➡️ 鈴鹿稻生', desc: '轉乘「伊勢鐵道」(15-20分)。記得買實體票！' },
+                  { step: '3', title: '步行抵達', desc: '從稻生站走路 20 分鐘即可進場。' }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-black shrink-0">{item.step}</div>
+                    <div>
+                      <div className="font-black text-base">{item.title}</div>
+                      <p className="text-xs text-neutral-500 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-              <p className="text-[10px] text-neutral-400 mt-4 italic text-center">※ 六日建議直接走路回白子站比較快喔！</p>
+            </div>
+
+            {/* Return Method B */}
+            <div className="bg-white p-6 rounded-[2.5rem] border-2 border-[#e0e0e0] shadow-sm">
+              <h3 className="font-black text-xl mb-4 text-orange-600 flex items-center gap-2">回程建議：方案 B</h3>
+              <p className="text-xs text-neutral-400 mb-4 italic">目標：六日絕對不排接駁車，用走的比較快</p>
+              <div className="space-y-4">
+                <div className="bg-orange-50 p-4 rounded-2xl border border-orange-100">
+                  <div className="font-black text-sm text-orange-700 mb-1 flex items-center gap-1">
+                    <Footprints size={14}/> 步行 80 分鐘至白子站
+                  </div>
+                  <p className="text-xs text-orange-600 leading-relaxed">
+                    賽後接駁車排隊需 1.5 - 2 小時。與其罰站，不如慢慢走去白子站，沿途還有熱鬧攤位。
+                  </p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                  <div className="font-black text-sm text-blue-700 mb-1 flex items-center gap-1">
+                    <Ticket size={14}/> 近鐵特急預約
+                  </div>
+                  <p className="text-xs text-blue-600 leading-relaxed">
+                    回程（白子 ➡️ 名古屋）請務必提早在官網搶票，否則只能一路站回名古屋。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Timetable Sticker */}
+            <div className="bg-white border-2 border-[#e0e0e0] rounded-[2.5rem] p-6 shadow-sm relative overflow-hidden">
+               <div className="absolute -right-4 -top-4 opacity-5 rotate-12">
+                 <Clock size={120} />
+               </div>
+              <h3 className="font-black text-lg text-[#333] mb-4 text-center">🚌 白子站接駁車時間 (2026)</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs text-left">
+                  <thead>
+                    <tr className="border-b-2 border-neutral-100">
+                      <th className="py-2 text-neutral-400">日期</th>
+                      <th className="py-2">去程 (白子發)</th>
+                      <th className="py-2">回程 (賽場發)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { date: '3/26 (四)', go: '07:00-12:00', back: '12:30-18:00' },
+                      { date: '3/27 (五)', go: '06:30-12:00', back: '15:00-18:00' },
+                      { date: '3/28 (六)', go: '06:30-13:00', back: '15:00-20:00' },
+                      { date: '3/29 (日)', go: '06:00-13:00', back: '15:00-19:30' }
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-dashed border-neutral-100">
+                        <td className="py-3 font-bold">{row.date}</td>
+                        <td className="py-3">{row.go}</td>
+                        <td className="py-3 font-black text-red-500">{row.back}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-4 bg-neutral-50 p-3 rounded-xl">
+                 <p className="text-[10px] text-neutral-500 leading-relaxed font-bold">
+                   💡 四、五人少可排接駁車；六、日強烈建議直接啟動「方案 B」步行挑戰！
+                 </p>
+              </div>
             </div>
           </div>
         )}
