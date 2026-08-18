@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="220" viewBox="0 0 600 220">
+  <rect width="600" height="220" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+  <text x="24" y="46" font-family="Helvetica,Arial" font-size="24" font-weight="bold" fill="#1f2328">SVG in Markdown</text>
+  <rect x="24"  y="120" width="70" height="70"  fill="#0969da"/>
+  <rect x="114" y="90"  width="70" height="100" fill="#1a7f37"/>
+  <rect x="204" y="60"  width="70" height="130" fill="#bf3989"/>
+  <rect x="294" y="140" width="70" height="50"  fill="#9a6700"/>
+  <line x1="24" y1="190" x2="576" y2="190" stroke="#1f2328" stroke-width="2"/>
+</svg>
